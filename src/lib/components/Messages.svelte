@@ -48,7 +48,7 @@
 			</i>
 
 			<div class="pt-4">
-				{#if hired}
+				{#if hired || $data.devs.find(m => m.username==currentMessage.sender.username)}
 					<button
 						disabled
 						class="bg-neutral-6 text-white text-base rounded-2 px-4 py-1 pointer-events-none">
@@ -57,6 +57,7 @@
 				{:else}
 					<button
 						onclick={() => {
+							if (currentMessage.hired) return
 							// you're hired
 							if (currentMessage) currentMessage.hired = true
 							$data.devs.push({

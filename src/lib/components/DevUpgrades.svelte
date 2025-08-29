@@ -13,7 +13,8 @@
 		{
 			name: "skill",
 			desc: "upgrade your skill to earn more development per click",
-			costs: (lvl: number) => Math.floor(2.1 ** (lvl + 4) * 4),
+			// if the first upgrade of this is ever greater than base storage, the game would be impossible
+			costs: (lvl: number) => Math.floor(2.1 ** (lvl + 2) * 4),
 			requires: () => $data.devUpgrades.pc > 1,
 			maxLevel: 9,
 			onPurchase: () => $data.devUpgrades.skill++
